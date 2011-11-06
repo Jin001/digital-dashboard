@@ -16,6 +16,7 @@ public class DashboardServiceStub implements IDashboardService {
 	
 	private IHistoryDAO historyDAO;
 	private ISettingsDAO settingsDAO;
+	private int distance = 12500;
 	
 	
 	/**
@@ -30,13 +31,14 @@ public class DashboardServiceStub implements IDashboardService {
 	@Override
 	public int getCurrentDistance() {
 		// testing value
-		return 125000; // miles
+		return distance; // miles
 	}
 
 	@Override
 	public int getCurrentSpeed() {
 		// testing value
-		return 55; // miles per hour
+		int min = 9, max = 99;
+		return min + (int)(Math.random()*((max - min) + 1)); // miles per hour
 	}
 
 	@Override

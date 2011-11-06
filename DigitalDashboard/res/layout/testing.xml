@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="fill_parent"
+    android:layout_height="fill_parent" android:orientation="horizontal" android:layout_gravity="center_horizontal" android:gravity="center">
+    <TableLayout android:layout_height="match_parent" android:layout_width="wrap_content" android:id="@+id/tableTop" android:gravity="center_horizontal">
+        <TableRow android:id="@+id/rowVelocity" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <ImageView android:src="@drawable/digit0" android:layout_height="180dp" android:id="@+id/tensDigit" android:layout_width="120dp"></ImageView>
+            <ImageView android:src="@drawable/digit0" android:layout_height="180dp" android:id="@+id/onesDigit" android:layout_width="120dp"></ImageView>
+        </TableRow><TableRow  android:id="@+id/rowTripometer" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <TextView android:layout_width="wrap_content" android:id="@+id/tripometerLabel" android:layout_height="wrap_content" android:textAppearance="?android:attr/textAppearanceLarge" android:text="Tripometer:"></TextView>
+            <TextView android:id="@+id/tripometerDisplay" android:layout_height="wrap_content" android:textAppearance="?android:attr/textAppearanceLarge" android:text="0" android:layout_width="wrap_content" android:layout_gravity="right"></TextView>
+        </TableRow>
+        <TableRow  android:id="@+id/rowMaxSpeed" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_gravity="left">
+            <TextView android:layout_width="wrap_content" android:text="Max Speed:" android:textAppearance="?android:attr/textAppearanceLarge" android:layout_height="wrap_content" android:id="@+id/maxVelocityLabel"></TextView>
+        	<TextView android:text="0" android:textAppearance="?android:attr/textAppearanceLarge" android:layout_height="wrap_content" android:id="@+id/maxVelocityDisplay" android:layout_width="wrap_content" android:layout_gravity="right"></TextView>
+        </TableRow>
+        <Button android:text="Test History" android:id="@+id/testHistorySubmit" android:layout_width="wrap_content" android:layout_height="wrap_content"></Button>
+        <Button android:text="Reset History" android:id="@+id/testHistoryReset" android:layout_width="wrap_content" android:layout_height="wrap_content"></Button>
+	    <TextView android:text="Travel Mode" android:id="@+id/testTravelMode" android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
+	    <RadioGroup android:id="@+id/travelModeGroup" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <RadioButton android:id="@+id/travelModeWalk" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Walk" android:checked="true" ></RadioButton>
+            <RadioButton android:id="@+id/travelModeBike" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Bike"></RadioButton>
+            <RadioButton android:id="@+id/travelModeMotor" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Motor Vehicle"></RadioButton>
+        </RadioGroup>
+        <TextView android:text="Background Mode" android:id="@+id/testBackgroundMode" android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
+        <RadioGroup android:id="@+id/backgroundModeGroup" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <RadioButton android:id="@+id/backgroundModeDay" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Day" android:checked="true" ></RadioButton>
+            <RadioButton android:id="@+id/backgroundModeNight" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Night"></RadioButton>
+        </RadioGroup>
+        <TextView android:text="Units" android:id="@+id/testUnits" android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
+        <RadioGroup android:id="@+id/unitsGroup" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <RadioButton android:id="@+id/unitsUS" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="US" android:checked="true" ></RadioButton>
+            <RadioButton android:id="@+id/unitsMetric" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Metric"></RadioButton>
+        </RadioGroup>
+        <Button android:text="Test Settings" android:id="@+id/testSettingsSubmit" android:layout_width="wrap_content" android:layout_height="wrap_content"></Button>
+    </TableLayout>
+</ScrollView>

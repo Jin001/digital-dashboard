@@ -1,7 +1,6 @@
 package com.dashboard.ui;
 
 import android.app.Activity;
-import android.os.Bundle;
 
 /**
  * Abstract class definition for a DashboardActivity; 
