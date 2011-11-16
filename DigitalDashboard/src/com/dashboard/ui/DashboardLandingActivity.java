@@ -1,8 +1,13 @@
 package com.dashboard.ui;
 
+
+import com.dashboard.ui.R.id;
+
 import android.app.Activity;
 import android.os.Bundle;
-
+import android.view.View;
+import android.widget.Toast;
+import android.widget.Button;
 /**
  * Concrete instantiation of an AbstractDashboardActivity, used for the main dashboard display.
  * @author Levi Lynch
@@ -10,6 +15,7 @@ import android.os.Bundle;
  *
  *
  */
+
 
 public class DashboardLandingActivity extends Activity{
     /** 
@@ -21,6 +27,23 @@ public class DashboardLandingActivity extends Activity{
         
         // set the layout to landing.xml
         setContentView(R.layout.landing);
+        final Button button = (Button) findViewById(R.id.btnStart);
+        button.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                // Perform action on click
+            	setContentView(R.layout.testing);
+            }
+        });
+        
+        
     }
+       
 
-}
+};
+
+
+
+
+
+
+
