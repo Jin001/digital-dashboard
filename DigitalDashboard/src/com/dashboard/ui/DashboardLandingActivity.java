@@ -4,6 +4,7 @@ package com.dashboard.ui;
 import com.dashboard.ui.R.id;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -27,15 +28,20 @@ public class DashboardLandingActivity extends Activity{
         
         // set the layout to landing.xml
         setContentView(R.layout.landing);
-        final Button button = (Button) findViewById(R.id.btnStart);
+        Button button = (Button) findViewById(R.id.btnStart);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                // Perform action on click
-            	setContentView(R.layout.testing);
+               Intent startButton = new Intent(DashboardLandingActivity.this, DashboardTestActivity.class);
+               startActivity(startButton);
             }
         });
-        
-        
+        button = (Button) findViewById(R.id.btnSettings);
+        button.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+               Intent settingButton = new Intent(DashboardLandingActivity.this, DashboardSettingsActivity.class);
+               startActivity(settingButton);
+            }
+        });
     }
        
 
