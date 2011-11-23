@@ -1,13 +1,9 @@
 package com.dashboard.ui;
 
 
-import com.dashboard.ui.R.id;
-
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Toast;
 import android.widget.Button;
 /**
  * Concrete instantiation of an AbstractDashboardActivity, used for the main dashboard display.
@@ -18,7 +14,7 @@ import android.widget.Button;
  */
 
 
-public class DashboardLandingActivity extends Activity{
+public class DashboardLandingActivity extends AbstractDashboardActivity {
     /** 
      *  Called when the activity is first created.
      */
@@ -28,6 +24,8 @@ public class DashboardLandingActivity extends Activity{
         
         // set the layout to landing.xml
         setContentView(R.layout.landing);
+        
+        // create and set the OnClickListener for the Main Display button
         Button button = (Button) findViewById(R.id.btnStart);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -35,6 +33,8 @@ public class DashboardLandingActivity extends Activity{
                startActivity(startButton);
             }
         });
+        
+        // create and set the OnClickListener for the Settings button
         button = (Button) findViewById(R.id.btnSettings);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
