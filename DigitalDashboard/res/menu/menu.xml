@@ -3,7 +3,4 @@
     <item android:id="@+id/landing" android:title="@string/landing"></item>
     <item android:id="@+id/main" android:title="@string/main"></item>
     <item android:id="@+id/settings" android:title="@string/settings"></item>
-
-    
-
 </menu>

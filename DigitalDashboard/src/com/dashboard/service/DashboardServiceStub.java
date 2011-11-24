@@ -16,6 +16,8 @@ public class DashboardServiceStub implements IDashboardService {
 	
 	private IHistoryDAO historyDAO;
 	private ISettingsDAO settingsDAO;
+	
+	// TODO Replace this with the integration stub class
 	private int distance = 12500;
 	
 	
@@ -30,15 +32,21 @@ public class DashboardServiceStub implements IDashboardService {
 	
 	@Override
 	public int getCurrentDistance() {
-		// testing value
-		return distance; // miles
+		// return the testing value
+		// TODO Replace this with the integration stub class
+		return distance;
 	}
 
 	@Override
 	public int getCurrentSpeed() {
-		// testing value
+		int speed = -1;
+		
+		// get a testing value (miles per hour)
+		// TODO Replace this with the integration stub class
 		int min = 9, max = 99;
-		return min + (int)(Math.random()*((max - min) + 1)); // miles per hour
+		speed = min + (int)(Math.random()*((max - min) + 1));
+		
+		return speed;
 	}
 
 	@Override
@@ -71,6 +79,11 @@ public class DashboardServiceStub implements IDashboardService {
 	}
 	public ISettingsDAO getSettingsDAO() {
 		return settingsDAO;
+	}
+
+	@Override
+	public void resetHistory() {
+		// required, not used
 	}
 
 }

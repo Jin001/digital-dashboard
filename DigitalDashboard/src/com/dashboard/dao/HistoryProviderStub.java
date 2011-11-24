@@ -14,7 +14,6 @@ public class HistoryProviderStub implements IHistoryDAO {
 		
 		HistoryDTO history = null;
 		try {
-			// TODO attempt to retrieve this from the database
 			
 			// create a dummy object for testing
 			history = new HistoryDTO();
@@ -24,7 +23,7 @@ public class HistoryProviderStub implements IHistoryDAO {
 		} catch (Exception e) {
 			throw e;
 		} finally {
-			// TODO close the connection
+			// close the connection
 		}
 		
 		return history;
@@ -65,13 +64,18 @@ public class HistoryProviderStub implements IHistoryDAO {
 		
 		// update the record
 		try {
-			// TODO update the record in the database
+			// update the record in the database
 		} catch (Exception e) {
 			throw e;
 		} finally {
-			// TODO close the connection
+			// close the connection
 		}
 		
+	}
+
+	@Override
+	public void resetHistory() {
+		// required, not used
 	}
 
 }

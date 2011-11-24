@@ -25,4 +25,10 @@ public interface IHistoryDAO {
 	 * @throws Exception
 	 */
 	public void updateHistory(HistoryDTO history) throws Exception;
+
+	
+	/**
+	 * Resets the history values to zeroes.
+	 */
+	public void resetHistory();
 }

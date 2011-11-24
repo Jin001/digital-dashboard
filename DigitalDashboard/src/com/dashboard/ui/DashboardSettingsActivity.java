@@ -32,11 +32,46 @@ public class DashboardSettingsActivity extends AbstractDashboardActivity {
 
 		// set the layout to settings.xml
 		setContentView(R.layout.settings);
+		
+		// load the settings from the database
+		loadSavedSettings();
 
 		// set the settings test button
 		Button saveSettings = (Button) findViewById(R.id.SaveSettingsButton);
 		saveSettings.setOnClickListener(new SaveSettingsSubmitListener(this));
 
+	}
+	
+	/**
+	 * Loads the settings already stored in the database.
+	 */
+	private void loadSavedSettings() {
+
+		try {
+			// display the settings from the database
+			IDashboardService service = new DashboardService(this);
+			SettingsDTO settings = service.getSettings();
+			
+			// set the background mode
+			int id = settings.getBackgroundMode().equals(BackgroundMode.Day) ? R.id.bgModeDay : R.id.bgModeNight;
+			RadioButton rb = (RadioButton) findViewById(id);
+			rb.setChecked(true);
+
+			// set the travel mode
+			id = settings.getTravelMode().equals(TravelMode.Bike) 
+			   ? R.id.travelBike 
+			   : settings.getTravelMode().equals(TravelMode.Walk) ? R.id.travelWalk : R.id.travelMotor;
+			rb = (RadioButton) findViewById(id);
+			rb.setChecked(true);
+
+			// set the units
+			id = settings.getUnits().equals(Units.US) ? R.id.USUnits : R.id.MetricUnits;
+			rb = (RadioButton) findViewById(id);
+			rb.setChecked(true);
+			
+		} catch (Exception e) {
+			Toast.makeText(this, "An error occurred loading settings: "+e.getMessage(), Toast.LENGTH_LONG).show();
+		}
 	}
 
 	class SaveSettingsSubmitListener implements OnClickListener {
@@ -99,7 +134,8 @@ public class DashboardSettingsActivity extends AbstractDashboardActivity {
 
 				// display the exception
 				Toast.makeText(this.context, "An error occurred: "
-						+ e.getMessage(), Toast.LENGTH_LONG);
+						+ e.getMessage(), Toast.LENGTH_LONG)
+						.show();
 			}
 
 		}

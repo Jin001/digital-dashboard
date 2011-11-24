@@ -16,7 +16,7 @@ import com.dashboard.dto.Units;
  */
 public class SettingsProvider extends AbstractDashboardProvider implements ISettingsDAO {
 	
-	// selects the most recent entry in the settings table
+	// sql to retrieve the most recent entry from the settings table
 	private static final String SELECT_SETTINGS_SQL = 
 		"SELECT "+
 			BACKGROUND_MODE_FLD+", "+
@@ -54,7 +54,7 @@ public class SettingsProvider extends AbstractDashboardProvider implements ISett
 		}
 		
 		// return the stored or default settings
-		return settings == null ? SettingsDTO.getDefaultSettings() : settings;
+		return settings != null ? settings : SettingsDTO.getDefaultSettings();
 	}
 
 	@Override
