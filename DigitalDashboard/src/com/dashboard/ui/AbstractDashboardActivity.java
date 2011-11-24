@@ -14,12 +14,12 @@ import android.widget.Toast;
  */
 public class AbstractDashboardActivity extends Activity {
 	
+	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		
-		super.onCreateOptionsMenu(menu);
-		
 		// create and set the menu inflater
+		super.onCreateOptionsMenu(menu);		
 		getMenuInflater().inflate(R.menu.menu, menu);
 		
 		return true;
@@ -36,7 +36,11 @@ public class AbstractDashboardActivity extends Activity {
 				startActivity(new Intent(this, DashboardLandingActivity.class));
 				break;
 			case R.id.main:
-				startActivity(new Intent(this, DashboardDisplayActivity.class));
+				
+				// TODO CHANGE THIS BACK WHEN THE MAIN DISPLAY IS READY
+				//startActivity(new Intent(this, DashboardDisplayActivity.class));
+				startActivity(new Intent(this, DashboardTestActivity.class));
+				
 				break;
 			case R.id.settings:
 				startActivity(new Intent(this, DashboardSettingsActivity.class));
@@ -47,7 +51,4 @@ public class AbstractDashboardActivity extends Activity {
 		return true;
 	}
 	
-	
-
-
 }

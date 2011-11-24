@@ -6,16 +6,10 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.dashboard.dto.BackgroundMode;
 import com.dashboard.dto.HistoryDTO;
-import com.dashboard.dto.SettingsDTO;
-import com.dashboard.dto.TravelMode;
-import com.dashboard.dto.Units;
 import com.dashboard.service.DashboardService;
 import com.dashboard.service.IDashboardService;
 
@@ -45,9 +39,9 @@ public class DashboardTestActivity extends AbstractDashboardActivity {
         testSubmit = (Button)findViewById(R.id.testHistoryReset);
         testSubmit.setOnClickListener(new TestHistoryResetListener(this));
         
-        // set the settings test button
-        testSubmit = (Button)findViewById(R.id.testSettingsSubmit);
-        testSubmit.setOnClickListener(new TestSettingsSubmitListener(this));
+//        // set the settings test button
+//        testSubmit = (Button)findViewById(R.id.testSettingsSubmit);
+//        testSubmit.setOnClickListener(new TestSettingsSubmitListener(this));
     }
     
     
@@ -87,77 +81,77 @@ public class DashboardTestActivity extends AbstractDashboardActivity {
 			} catch (Exception e) {
 				
 				// display the exception
-				Toast.makeText(this.context, "An error occurred: "+e.getMessage(), Toast.LENGTH_LONG);
+				Toast.makeText(this.context, "An error occurred: "+e.getMessage(), Toast.LENGTH_LONG).show();
 			}
 			
 		}
     	
     }
         
-    /**
-     * Tests the settings persistence mechanisms.<br/>
-     * Inner class implementation of an OnClickListener used only for testing persistence.
-     * @author Joe Rains
-     *
-     */
-    class TestSettingsSubmitListener implements OnClickListener {
-
-    	private Context context;
-    	
-    	/**
-    	 * This class requires a Context to access the database
-    	 * @param context
-    	 */
-    	public TestSettingsSubmitListener(Context context) {
-    		this.context = context;
-    	}
-    	
-		@Override
-		public void onClick(View arg0) {
-			
-			// get the background mode
-			RadioGroup bgModeGroup = (RadioGroup)findViewById(R.id.backgroundModeGroup);
-			RadioButton rb = (RadioButton)findViewById(bgModeGroup.getCheckedRadioButtonId());
-			String bgMode = rb.getText().toString();
-			
-			// get the travel mode
-			RadioGroup travelModeGroup = (RadioGroup)findViewById(R.id.travelModeGroup);
-			rb = (RadioButton)findViewById(travelModeGroup.getCheckedRadioButtonId());
-			String travelMode = rb.getText().toString().replaceAll("\\s", "");
-			
-			// get the units
-			RadioGroup unitsGroup = (RadioGroup)findViewById(R.id.unitsGroup);
-			rb = (RadioButton)findViewById(unitsGroup.getCheckedRadioButtonId());
-			String units = rb.getText().toString();
-			
-			// set the settings object
-			SettingsDTO settings = new SettingsDTO();
-			settings.setBackgroundMode(BackgroundMode.valueOf(bgMode));
-			settings.setTravelMode(TravelMode.valueOf(travelMode));
-			settings.setUnits(Units.valueOf(units));
-			
-			try {
-				
-				// update the settings
-				IDashboardService service = new DashboardService(this.context);
-				service.updateSettings(settings);
-				
-				// display the settings from the database
-				settings = service.getSettings();
-				StringBuilder msg = new StringBuilder("The current settings are:\r\n\r\n");
-				msg.append(settings.getBackgroundMode().name()+"\r\n");
-				msg.append(settings.getTravelMode().name()+"\r\n");
-				msg.append(settings.getUnits().name());
-				Toast.makeText(this.context, msg.toString(), Toast.LENGTH_LONG).show();
-				
-			} catch (Exception e) {
-				
-				// display the exception
-				Toast.makeText(this.context, "An error occurred: "+e.getMessage(), Toast.LENGTH_LONG);
-			}
-		}
-    	
-    }
+//    /**
+//     * Tests the settings persistence mechanisms.<br/>
+//     * Inner class implementation of an OnClickListener used only for testing persistence.
+//     * @author Joe Rains
+//     *
+//     */
+//    class TestSettingsSubmitListener implements OnClickListener {
+//
+//    	private Context context;
+//    	
+//    	/**
+//    	 * This class requires a Context to access the database
+//    	 * @param context
+//    	 */
+//    	public TestSettingsSubmitListener(Context context) {
+//    		this.context = context;
+//    	}
+//    	
+//		@Override
+//		public void onClick(View arg0) {
+//			
+//			// get the background mode
+//			RadioGroup bgModeGroup = (RadioGroup)findViewById(R.id.backgroundModeGroup);
+//			RadioButton rb = (RadioButton)findViewById(bgModeGroup.getCheckedRadioButtonId());
+//			String bgMode = rb.getText().toString();
+//			
+//			// get the travel mode
+//			RadioGroup travelModeGroup = (RadioGroup)findViewById(R.id.travelModeGroup);
+//			rb = (RadioButton)findViewById(travelModeGroup.getCheckedRadioButtonId());
+//			String travelMode = rb.getText().toString().replaceAll("\\s", "");
+//			
+//			// get the units
+//			RadioGroup unitsGroup = (RadioGroup)findViewById(R.id.unitsGroup);
+//			rb = (RadioButton)findViewById(unitsGroup.getCheckedRadioButtonId());
+//			String units = rb.getText().toString();
+//			
+//			// set the settings object
+//			SettingsDTO settings = new SettingsDTO();
+//			settings.setBackgroundMode(BackgroundMode.valueOf(bgMode));
+//			settings.setTravelMode(TravelMode.valueOf(travelMode));
+//			settings.setUnits(Units.valueOf(units));
+//			
+//			try {
+//				
+//				// update the settings
+//				IDashboardService service = new DashboardService(this.context);
+//				service.updateSettings(settings);
+//				
+//				// display the settings from the database
+//				settings = service.getSettings();
+//				StringBuilder msg = new StringBuilder("The current settings are:\r\n\r\n");
+//				msg.append(settings.getBackgroundMode().name()+"\r\n");
+//				msg.append(settings.getTravelMode().name()+"\r\n");
+//				msg.append(settings.getUnits().name());
+//				Toast.makeText(this.context, msg.toString(), Toast.LENGTH_LONG).show();
+//				
+//			} catch (Exception e) {
+//				
+//				// display the exception
+//				Toast.makeText(this.context, "An error occurred: "+e.getMessage(), Toast.LENGTH_LONG);
+//			}
+//		}
+//    	
+//    }
     
     
     /**
@@ -211,7 +205,7 @@ public class DashboardTestActivity extends AbstractDashboardActivity {
 	    		service.updateHistory(history);
 	    		
 			} catch (Exception e) {
-				Toast.makeText(this.context, "An error occurred: "+e.getMessage(), Toast.LENGTH_LONG);
+				Toast.makeText(this.context, "An error occurred: "+e.getMessage(), Toast.LENGTH_LONG).show();
 			}
 			
 			// set the new screen values
@@ -235,7 +229,7 @@ public class DashboardTestActivity extends AbstractDashboardActivity {
 			} catch (Exception e) {
 				
 				// show the exception
-				Toast.makeText(this.context, "An error occurred: "+e.getMessage(), Toast.LENGTH_LONG);
+				Toast.makeText(this.context, "An error occurred: "+e.getMessage(), Toast.LENGTH_LONG).show();
 			}
     	}
     	
@@ -248,39 +242,38 @@ public class DashboardTestActivity extends AbstractDashboardActivity {
     	private void setImageSource(int i, ImageView img) {
     		// set the appropriate id value
     		switch (i) {
-    		case 0:
-    			img.setImageResource(R.drawable.digit0);
-    			break;
-    		case 1:
-    			img.setImageResource(R.drawable.digit1);
-    			break;
-    		case 2:
-    			img.setImageResource(R.drawable.digit2);
-    			break;
-    		case 3:
-    			img.setImageResource(R.drawable.digit3);
-    			break;
-    		case 4:
-    			img.setImageResource(R.drawable.digit4);
-    			break;
-    		case 5:
-    			img.setImageResource(R.drawable.digit5);
-    			break;
-    		case 6:
-    			img.setImageResource(R.drawable.digit6);
-    			break;
-    		case 7:
-    			img.setImageResource(R.drawable.digit7);
-    			break;
-    		case 8:
-    			img.setImageResource(R.drawable.digit8);
-    			break;
-    		case 9:
-    			img.setImageResource(R.drawable.digit9);
-    			break;
-    		default:
-    			img.setImageResource(R.drawable.digit0);
-    			
+	    		case 0:
+	    			img.setImageResource(R.drawable.digit0);
+	    			break;
+	    		case 1:
+	    			img.setImageResource(R.drawable.digit1);
+	    			break;
+	    		case 2:
+	    			img.setImageResource(R.drawable.digit2);
+	    			break;
+	    		case 3:
+	    			img.setImageResource(R.drawable.digit3);
+	    			break;
+	    		case 4:
+	    			img.setImageResource(R.drawable.digit4);
+	    			break;
+	    		case 5:
+	    			img.setImageResource(R.drawable.digit5);
+	    			break;
+	    		case 6:
+	    			img.setImageResource(R.drawable.digit6);
+	    			break;
+	    		case 7:
+	    			img.setImageResource(R.drawable.digit7);
+	    			break;
+	    		case 8:
+	    			img.setImageResource(R.drawable.digit8);
+	    			break;
+	    		case 9:
+	    			img.setImageResource(R.drawable.digit9);
+	    			break;
+	    		default:
+	    			img.setImageResource(R.drawable.digit0);
     		}
     	}
     }

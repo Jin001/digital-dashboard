@@ -3,8 +3,6 @@ package com.dashboard.dao;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
 
 import com.dashboard.dto.HistoryDTO;
 
@@ -13,24 +11,33 @@ import com.dashboard.dto.HistoryDTO;
  * @author Joe Rains
  *
  */
-public class HistoryProvider extends SQLiteOpenHelper implements IHistoryDAO {
+public class HistoryProvider extends AbstractDashboardProvider implements IHistoryDAO {
 
+	// selects the most recent entry in the history table
+	private static final String SELECT_HISTORY_SQL = 
+		"SELECT "+
+			MAX_SPEED_FLD+", "+
+			DISTANCE_FLD+
+		" FROM "+
+			HISTORY_TBL+
+		" WHERE "+
+			ID_FLD+" = (SELECT MAX("+ID_FLD+") FROM "+HISTORY_TBL+")";
+		
 	/**
 	 * The constructor for a HistoryProvider requires Context to access the database.
 	 * @param context the calling Activity
 	 */
 	public HistoryProvider(Context context) {
-		super(context, "DigitalDashboard", null, 1);
+		super(context);
 	}
-
+	
 	@Override
 	public HistoryDTO getHistory() throws Exception {
 
 		HistoryDTO history = new HistoryDTO();
 
 		// look for the most recent history
-		String sql = "SELECT maxSpeed, Distance FROM history WHERE _id = (SELECT MAX(_id) FROM history)";
-		Cursor c = getReadableDatabase().rawQuery(sql, null);
+		Cursor c = getReadableDatabase().rawQuery(SELECT_HISTORY_SQL, null);
 		
 		// get the first result
 		if (c.getCount() > 0) {
@@ -41,48 +48,38 @@ public class HistoryProvider extends SQLiteOpenHelper implements IHistoryDAO {
 		
 		return history;
 	}
-
+	
 	@Override
 	public void updateHistory(HistoryDTO history) throws Exception {
 		
 		// check for null
-		if (history == null) {
-			throw new NullPointerException("No history object was given to update");
-		}
+		if (history == null) throw new NullPointerException("No history object was given to update");
 		
 		// simple validations; track any errors
 		StringBuilder errorMessage = new StringBuilder();
-		if (history.getMaxSpeed() < 0) {
-			errorMessage.append("The max speed cannot be a negative number ["+history.getMaxSpeed()+"]");
-		}
+		if (history.getMaxSpeed() < 0) errorMessage.append("The max speed cannot be a negative number ["+history.getMaxSpeed()+"]");
 		if (history.getDistance() < 0) {
-			if (errorMessage.length() > 0) {
-				errorMessage.append("; ");
-			}
+			if (errorMessage.length() > 0) errorMessage.append("; ");
 			errorMessage.append("The distance traveled cannot be a negative number ["+history.getDistance()+"]");
 		}
 		
 		// if the error message is not empty, throw an exception with its contents
-		if (errorMessage.length() > 0) {
-			throw new IllegalArgumentException("Invalid history: "+errorMessage.toString());
-		}
+		if (errorMessage.length() > 0) throw new IllegalArgumentException("Invalid history: "+errorMessage.toString());
 		
 		// get the most recent history from the database
 		HistoryDTO currentHistory = getHistory();
 		
 		// set the values
 		history.setDistance(history.getDistance() + currentHistory.getDistance());
-		if (history.getMaxSpeed() < currentHistory.getMaxSpeed()) {
-			history.setMaxSpeed(currentHistory.getMaxSpeed());
-		}
+		if (history.getMaxSpeed() < currentHistory.getMaxSpeed()) history.setMaxSpeed(currentHistory.getMaxSpeed());
 		
 		// create the parameter values
 		ContentValues values = new ContentValues(2);
-		values.put("maxSpeed", history.getMaxSpeed());
-		values.put("distance", history.getDistance());
+		values.put(MAX_SPEED_FLD, history.getMaxSpeed());
+		values.put(DISTANCE_FLD, history.getDistance());
 		
 		// insert the record
-		getWritableDatabase().insert("history", "distance", values);
+		getWritableDatabase().insert(HISTORY_TBL, DISTANCE_FLD, values);
 	}
 	
 	/**
@@ -92,31 +89,11 @@ public class HistoryProvider extends SQLiteOpenHelper implements IHistoryDAO {
 		
 		// create the parameter values
 		ContentValues values = new ContentValues(2);
-		values.put("maxSpeed", 0);
-		values.put("distance", 0);
+		values.put(MAX_SPEED_FLD, 0);
+		values.put(DISTANCE_FLD, 0);
 		
 		// insert the record
-		getWritableDatabase().insert("history", "distance", values);
-	}
-
-	@Override
-	public void onCreate(SQLiteDatabase db) {
-		// Create the schema
-		StringBuilder sql = new StringBuilder();
-		
-		// create the sql for the history table
-		sql.append("CREATE TABLE history (");
-		sql.append("_id INTEGER PRIMARY KEY AUTOINCREMENT, ");
-		sql.append("maxSpeed INTEGER,");
-		sql.append("distance INTEGER);");
-		
-		// execute the history table sql
-		db.execSQL(sql.toString());
-	}
-
-	@Override
-	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-		// do nothing
+		getWritableDatabase().insert(HISTORY_TBL, DISTANCE_FLD, values);
 	}
 
 }
