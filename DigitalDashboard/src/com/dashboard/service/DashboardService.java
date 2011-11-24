@@ -3,6 +3,8 @@ package com.dashboard.service;
 import android.content.Context;
 
 import com.dashboard.dao.HistoryProvider;
+import com.dashboard.dao.IHistoryDAO;
+import com.dashboard.dao.ISettingsDAO;
 import com.dashboard.dao.SettingsProvider;
 import com.dashboard.dto.HistoryDTO;
 import com.dashboard.dto.SettingsDTO;
@@ -28,16 +30,24 @@ public class DashboardService implements IDashboardService {
 
 	@Override
 	public int getCurrentDistance() {
-		// TODO replace with code by integration specialist
+		int distance = -1;
+
+		// TODO Replace this with a value from the GPS integration class
 		int min = 9, max = 499;
-		return min + (int)(Math.random()*((max - min) + 1));
+		distance = min + (int)(Math.random()*((max - min) + 1));
+		
+		return distance;
 	}
 
 	@Override
 	public int getCurrentSpeed() {
-		// TODO replace with code by integration specialist
+		int speed = -1;
+
+		// TODO Replace this with a value from the GPS integration class
 		int min = 9, max = 99;
-		return min + (int)(Math.random()*((max - min) + 1));
+		speed = min + (int)(Math.random()*((max - min) + 1));
+		
+		return speed;
 	}
 
 	@Override
@@ -47,25 +57,38 @@ public class DashboardService implements IDashboardService {
 
 	@Override
 	public void updateHistory(HistoryDTO history) throws Exception {
-		this.historyDAO.updateHistory(history);
+		getHistoryDAO().updateHistory(history);
 	}
 	
-	/**
-	 * Reset the values to zeroes.
-	 * @throws Exception
-	 */
-	public void resetHistory() throws Exception {
-		this.historyDAO.resetHistory();
+	@Override
+	public void resetHistory() {
+		getHistoryDAO().resetHistory();
 	}
 
 	@Override
 	public SettingsDTO getSettings() throws Exception {
-		return this.settingsDAO.getSettings();
+		return getSettingsDAO().getSettings();
 	}
 
 	@Override
 	public void updateSettings(SettingsDTO settings) throws Exception {
-		this.settingsDAO.updateSettings(settings);
+		getSettingsDAO().updateSettings(settings);
+	}
+	
+	/**
+	 * Private accessor for the history DAO class.
+	 * @return IHistoryDAO
+	 */
+	private IHistoryDAO getHistoryDAO() {
+		return historyDAO;
+	}
+	
+	/**
+	 * Private accessor for the settings DAO class.
+	 * @return ISettingsDAO
+	 */
+	private ISettingsDAO getSettingsDAO() {
+		return settingsDAO;
 	}
 
 }

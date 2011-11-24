@@ -13,7 +13,7 @@ import com.dashboard.dto.HistoryDTO;
  */
 public class HistoryProvider extends AbstractDashboardProvider implements IHistoryDAO {
 
-	// selects the most recent entry in the history table
+	// sql to retrieve the most recent entry from the history table
 	private static final String SELECT_HISTORY_SQL = 
 		"SELECT "+
 			MAX_SPEED_FLD+", "+
@@ -33,8 +33,7 @@ public class HistoryProvider extends AbstractDashboardProvider implements IHisto
 	
 	@Override
 	public HistoryDTO getHistory() throws Exception {
-
-		HistoryDTO history = new HistoryDTO();
+		HistoryDTO history = null;
 
 		// look for the most recent history
 		Cursor c = getReadableDatabase().rawQuery(SELECT_HISTORY_SQL, null);
@@ -42,6 +41,7 @@ public class HistoryProvider extends AbstractDashboardProvider implements IHisto
 		// get the first result
 		if (c.getCount() > 0) {
 			c.moveToFirst();
+			history = new HistoryDTO();
 			history.setMaxSpeed(c.getInt(0));
 			history.setDistance(c.getInt(1));
 		}
@@ -82,9 +82,7 @@ public class HistoryProvider extends AbstractDashboardProvider implements IHisto
 		getWritableDatabase().insert(HISTORY_TBL, DISTANCE_FLD, values);
 	}
 	
-	/**
-	 * Resets the history values to zeroes.
-	 */
+	@Override
 	public void resetHistory() {
 		
 		// create the parameter values

@@ -31,6 +31,9 @@ public class DashboardTestActivity extends AbstractDashboardActivity {
         // set the layout to main.xml
         setContentView(R.layout.testing);
         
+        // load history from the database
+        loadHistory();
+        
         // set the history test button
         Button testSubmit = (Button)findViewById(R.id.testHistorySubmit);
         testSubmit.setOnClickListener(new TestHistorySubmitListener(this));
@@ -42,6 +45,29 @@ public class DashboardTestActivity extends AbstractDashboardActivity {
 //        // set the settings test button
 //        testSubmit = (Button)findViewById(R.id.testSettingsSubmit);
 //        testSubmit.setOnClickListener(new TestSettingsSubmitListener(this));
+    }
+    
+    
+    private void loadHistory() {
+    	try {
+    		
+    		// try to get the history from the service
+    		IDashboardService service = new DashboardService(this);
+    		HistoryDTO history = service.getHistory();
+    		
+    		if (history != null) {
+    			// tripometer
+				TextView tripometer = (TextView)findViewById(R.id.tripometerDisplay);
+	    		tripometer.setText(String.valueOf(history.getDistance()));
+				
+				// max speed
+				TextView maxSpeed = (TextView)findViewById(R.id.maxVelocityDisplay);
+				maxSpeed.setText(String.valueOf(history.getMaxSpeed()));
+    		}
+			
+		} catch (Exception e) {
+			Toast.makeText(this, "An error occurred loading history: "+e.getMessage(), Toast.LENGTH_LONG).show();
+		}
     }
     
     
@@ -222,9 +248,7 @@ public class DashboardTestActivity extends AbstractDashboardActivity {
 				maxSpeed.setText(String.valueOf(history.getMaxSpeed()));
 				
 				// show a message if a new high speed has been reached
-				if (speed == history.getMaxSpeed()) {
-					Toast.makeText(this.context, "Max Speed Achieved!", Toast.LENGTH_LONG).show();
-				}
+				if (speed == history.getMaxSpeed()) Toast.makeText(this.context, "Max Speed Achieved!", Toast.LENGTH_LONG).show();
 				
 			} catch (Exception e) {
 				

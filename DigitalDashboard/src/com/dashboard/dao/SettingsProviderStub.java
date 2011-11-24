@@ -14,7 +14,7 @@ public class SettingsProviderStub implements ISettingsDAO {
 		
 		SettingsDTO settings = null;
 		try {
-			// TODO attempt to retrieve this from the database
+			// attempt to retrieve this from the database
 			
 			// create a default object for testing
 			settings = SettingsDTO.getDefaultSettings();
@@ -22,7 +22,7 @@ public class SettingsProviderStub implements ISettingsDAO {
 		} catch (Exception e) {
 			throw e;
 		} finally {
-			// TODO close the connection
+			// close the connection
 		}
 		
 		return settings;
@@ -52,7 +52,7 @@ public class SettingsProviderStub implements ISettingsDAO {
 			throw new IllegalArgumentException("Invalid settings: "+errorMessage.toString());
 		}
 		
-		// TODO update the settings in the database
+		// update the settings in the database
 		
 	}
 
