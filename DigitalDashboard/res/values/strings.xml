@@ -3,6 +3,6 @@
     <string name="hello">Hello World, AbstractDashboardActivity!</string>
     <string name="app_name">Digital Dashboard</string>
     <string name="settings">Settings</string>
-    <string name="landing">Landing</string>
-    <string name="main">Main</string>
+    <string name="landing">Home</string>
+    <string name="main">Dashboard</string>
 </resources>
