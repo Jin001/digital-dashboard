@@ -18,11 +18,7 @@ import android.widget.Toast;
 /**
  * Concrete instantiation of an AbstractDashboardActivity, used for displaying
  * and editing application settings.
- * 
- * @author Joe Rains 10/25/2011 -Levi: Connected activity to setting.xml for
- *         layout.
- * 
- * 
+ * @author Joe Rains
  * 
  */
 public class DashboardSettingsActivity extends AbstractDashboardActivity {
