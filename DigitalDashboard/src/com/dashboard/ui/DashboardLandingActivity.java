@@ -29,7 +29,7 @@ public class DashboardLandingActivity extends AbstractDashboardActivity {
         Button button = (Button) findViewById(R.id.btnStart);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-               Intent startButton = new Intent(DashboardLandingActivity.this, DashboardTestActivity.class);
+               Intent startButton = new Intent(DashboardLandingActivity.this, DashboardDisplayActivity.class);
                startActivity(startButton);
             }
         });
