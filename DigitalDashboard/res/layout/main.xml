@@ -1,53 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/TableLayout1"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent">
-    
-  <Button android:id="@+id/btnSave"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="Save" />
-
-    <Button android:id="@+id/btnOpen"
+    android:layout_height="fill_parent" >
+
+    <TableRow
+        android:id="@+id/rowVelocity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Open" />
+        android:gravity="center_horizontal" >
 
-    <ImageButton android:id="@+id/btnImg1"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:src="@drawable/icon" />
+        <ImageView
+            android:id="@+id/tensDigit"
+            android:layout_width="120dp"
+            android:layout_height="180dp"
+            android:src="@drawable/digit0" >
+        </ImageView>
 
-    <EditText android:id="@+id/txtName"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content" />
-
-    <CheckBox android:id="@+id/chkAutosave"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="Autosave" />
-
-    <CheckBox android:id="@+id/star"
-        style="?android:attr/starStyle"
+        <ImageView
+            android:id="@+id/onesDigit"
+            android:layout_width="120dp"
+            android:layout_height="180dp"
+            android:src="@drawable/digit0" >
+        </ImageView>
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/rowTripometer"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
-    <RadioGroup android:id="@+id/rdbGp1"
-        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical" >
-        <RadioButton android:id="@+id/rdb1"
-            android:layout_width="fill_parent"
+        android:gravity="center_horizontal" >
+
+        <TextView
+            android:id="@+id/tripometerLabel"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Option 1" />
-        <RadioButton android:id="@+id/rdb2"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="Option 2" />
-    </RadioGroup>
+            android:text="Tripometer:"
+            android:textAppearance="?android:attr/textAppearanceLarge" >
+        </TextView>
 
-    <ToggleButton android:id="@+id/toggle1"
+        <TextView
+            android:id="@+id/tripometerDisplay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:text="0"
+            android:textAppearance="?android:attr/textAppearanceLarge" >
+        </TextView>
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/rowMaxSpeed"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-</LinearLayout>
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:gravity="center_horizontal" >
+
+        <TextView
+            android:id="@+id/maxVelocityLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Max Speed:"
+            android:textAppearance="?android:attr/textAppearanceLarge" >
+        </TextView>
+
+        <TextView
+            android:id="@+id/maxVelocityDisplay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:text="0"
+            android:textAppearance="?android:attr/textAppearanceLarge" >
+        </TextView>
+    </TableRow>
+
+</TableLayout>
