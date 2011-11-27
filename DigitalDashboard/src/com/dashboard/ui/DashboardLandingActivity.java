@@ -26,6 +26,7 @@ public class DashboardLandingActivity extends AbstractDashboardActivity {
         setContentView(R.layout.landing);
         
         // create and set the OnClickListener for the Main Display button
+        //This Controls the Dashboard button
         Button button = (Button) findViewById(R.id.btnStart);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -35,6 +36,7 @@ public class DashboardLandingActivity extends AbstractDashboardActivity {
         });
         
         // create and set the OnClickListener for the Settings button
+        //This Controls the Settings Button
         button = (Button) findViewById(R.id.btnSettings);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -42,6 +44,16 @@ public class DashboardLandingActivity extends AbstractDashboardActivity {
                startActivity(settingButton);
             }
         });
+        // create and set the OnClickListener for the Exit button
+        //This Controls the Exit Button
+        button = (Button)this.findViewById(R.id.btnExit);
+        button.setOnClickListener(new View.OnClickListener() {
+          @Override
+          public void onClick(View v) {
+        	  System.exit(0);
+          }
+       });
+        
     }
        
 
