@@ -1,19 +1,97 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="fill_parent"
-    android:layout_height="fill_parent" android:orientation="horizontal" android:layout_gravity="center_horizontal" android:gravity="center">
-    <TableLayout android:layout_height="match_parent" android:layout_width="wrap_content" android:id="@+id/tableTop" android:gravity="center_horizontal">
-        <TableRow android:id="@+id/rowVelocity" android:layout_width="wrap_content" android:layout_height="wrap_content">
-            <ImageView android:src="@drawable/digit0" android:layout_height="180dp" android:id="@+id/tensDigit" android:layout_width="120dp"></ImageView>
-            <ImageView android:src="@drawable/digit0" android:layout_height="180dp" android:id="@+id/onesDigit" android:layout_width="120dp"></ImageView>
-        </TableRow><TableRow  android:id="@+id/rowTripometer" android:layout_width="wrap_content" android:layout_height="wrap_content">
-            <TextView android:layout_width="wrap_content" android:id="@+id/tripometerLabel" android:layout_height="wrap_content" android:textAppearance="?android:attr/textAppearanceLarge" android:text="Tripometer:"></TextView>
-            <TextView android:id="@+id/tripometerDisplay" android:layout_height="wrap_content" android:textAppearance="?android:attr/textAppearanceLarge" android:text="0" android:layout_width="wrap_content" android:layout_gravity="right"></TextView>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_gravity="center_horizontal"
+    android:gravity="center"
+    android:orientation="horizontal" >
+
+    <TableLayout
+        android:id="@+id/tableTop"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal" >
+
+        <TableRow
+            android:id="@+id/rowVelocity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <ImageView
+                android:id="@+id/tensDigit"
+                android:layout_width="120dp"
+                android:layout_height="180dp"
+                android:src="@drawable/digit0" >
+            </ImageView>
+
+            <ImageView
+                android:id="@+id/onesDigit"
+                android:layout_width="120dp"
+                android:layout_height="180dp"
+                android:src="@drawable/digit0" >
+            </ImageView>
         </TableRow>
-        <TableRow  android:id="@+id/rowMaxSpeed" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_gravity="left">
-            <TextView android:layout_width="wrap_content" android:text="Max Speed:" android:textAppearance="?android:attr/textAppearanceLarge" android:layout_height="wrap_content" android:id="@+id/maxVelocityLabel"></TextView>
-        	<TextView android:text="0" android:textAppearance="?android:attr/textAppearanceLarge" android:layout_height="wrap_content" android:id="@+id/maxVelocityDisplay" android:layout_width="wrap_content" android:layout_gravity="right"></TextView>
+
+        <TableRow
+            android:id="@+id/rowTripometer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/tripometerLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tripometer:"
+                android:textAppearance="?android:attr/textAppearanceLarge" >
+            </TextView>
+
+            <TextView
+                android:id="@+id/tripometerDisplay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:text="0"
+                android:textAppearance="?android:attr/textAppearanceLarge" >
+            </TextView>
         </TableRow>
-        <Button android:text="Test History" android:id="@+id/testHistorySubmit" android:layout_width="wrap_content" android:layout_height="wrap_content"></Button>
-        <Button android:text="Reset History" android:id="@+id/testHistoryReset" android:layout_width="wrap_content" android:layout_height="wrap_content"></Button>
+
+        <TableRow
+            android:id="@+id/rowMaxSpeed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left" >
+
+            <TextView
+                android:id="@+id/maxVelocityLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Max Speed:"
+                android:textAppearance="?android:attr/textAppearanceLarge" >
+            </TextView>
+
+            <TextView
+                android:id="@+id/maxVelocityDisplay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:text="0"
+                android:textAppearance="?android:attr/textAppearanceLarge" >
+            </TextView>
+        </TableRow>
+
+        <Button
+            android:id="@+id/testHistorySubmit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Test History" >
+        </Button>
+
+        <Button
+            android:id="@+id/testHistoryReset"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Reset History" >
+        </Button>
     </TableLayout>
+
 </ScrollView>
