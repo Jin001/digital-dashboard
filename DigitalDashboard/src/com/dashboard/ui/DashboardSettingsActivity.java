@@ -18,6 +18,7 @@ import android.widget.Toast;
 /**
  * Concrete instantiation of an AbstractDashboardActivity, used for displaying
  * and editing application settings.
+ * 
  * @author MazanSM
  * 
  */
@@ -32,7 +33,7 @@ public class DashboardSettingsActivity extends AbstractDashboardActivity {
 
 		// set the layout to settings.xml
 		setContentView(R.layout.settings);
-		
+
 		// load the settings from the database
 		loadSavedSettings();
 
@@ -41,7 +42,7 @@ public class DashboardSettingsActivity extends AbstractDashboardActivity {
 		saveSettings.setOnClickListener(new SaveSettingsSubmitListener(this));
 
 	}
-	
+
 	/**
 	 * Loads the settings already stored in the database.
 	 */
@@ -51,26 +52,30 @@ public class DashboardSettingsActivity extends AbstractDashboardActivity {
 			// display the settings from the database
 			IDashboardService service = new DashboardService(this);
 			SettingsDTO settings = service.getSettings();
-			
+
 			// set the background mode
-			int id = settings.getBackgroundMode().equals(BackgroundMode.Day) ? R.id.bgModeDay : R.id.bgModeNight;
+			int id = settings.getBackgroundMode().equals(BackgroundMode.Day) ? R.id.bgModeDay
+					: R.id.bgModeNight;
 			RadioButton rb = (RadioButton) findViewById(id);
 			rb.setChecked(true);
 
 			// set the travel mode
-			id = settings.getTravelMode().equals(TravelMode.Bike) 
-			   ? R.id.travelBike 
-			   : settings.getTravelMode().equals(TravelMode.Walk) ? R.id.travelWalk : R.id.travelMotor;
+			id = settings.getTravelMode().equals(TravelMode.Bike) ? R.id.travelBike
+					: settings.getTravelMode().equals(TravelMode.Walk) ? R.id.travelWalk
+							: R.id.travelMotor;
 			rb = (RadioButton) findViewById(id);
 			rb.setChecked(true);
 
 			// set the units
-			id = settings.getUnits().equals(Units.US) ? R.id.USUnits : R.id.MetricUnits;
+			id = settings.getUnits().equals(Units.US) ? R.id.USUnits
+					: R.id.MetricUnits;
 			rb = (RadioButton) findViewById(id);
 			rb.setChecked(true);
-			
+
 		} catch (Exception e) {
-			Toast.makeText(this, "An error occurred loading settings: "+e.getMessage(), Toast.LENGTH_LONG).show();
+			Toast.makeText(this,
+					"An error occurred loading settings: " + e.getMessage(),
+					Toast.LENGTH_LONG).show();
 		}
 	}
 
@@ -133,9 +138,9 @@ public class DashboardSettingsActivity extends AbstractDashboardActivity {
 			} catch (Exception e) {
 
 				// display the exception
-				Toast.makeText(this.context, "An error occurred: "
-						+ e.getMessage(), Toast.LENGTH_LONG)
-						.show();
+				Toast.makeText(this.context,
+						"An error occurred: " + e.getMessage(),
+						Toast.LENGTH_LONG).show();
 			}
 
 		}
