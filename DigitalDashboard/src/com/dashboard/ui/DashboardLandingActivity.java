@@ -46,13 +46,13 @@ public class DashboardLandingActivity extends AbstractDashboardActivity {
         });
         // create and set the OnClickListener for the Exit button
         //This Controls the Exit Button
-        button = (Button)this.findViewById(R.id.btnExit);
-        button.setOnClickListener(new View.OnClickListener() {
-          @Override
-          public void onClick(View v) {
-        	  System.exit(0);
-          }
-       });
+//        button = (Button)this.findViewById(R.id.btnExit);
+//        button.setOnClickListener(new View.OnClickListener() {
+//          @Override
+//          public void onClick(View v) {
+//        	  System.exit(0);
+//          }
+//       });
         
     }
        
