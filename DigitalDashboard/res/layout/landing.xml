@@ -1,10 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent" android:orientation="vertical" android:weightSum="1">
-    <RelativeLayout android:layout_width="match_parent" android:id="@+id/relativeLayout1" android:layout_height="wrap_content" android:layout_weight="0.50">
-        <Button android:text="@string/main" android:id="@+id/btnStart" android:layout_width="100dp" android:layout_height="wrap_content" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" android:layout_marginTop="124dp"></Button>
-        <Button android:text="@string/settings" android:id="@+id/btnSettings" android:layout_width="100dp" android:layout_height="wrap_content" android:layout_below="@+id/btnStart" android:layout_alignLeft="@+id/btnStart" android:layout_marginTop="36dp"></Button>
-        <Button android:text="Exit" android:id="@+id/btnExit" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_below="@+id/btnSettings" android:layout_marginTop="42dp" android:layout_alignRight="@+id/btnSettings" android:layout_alignLeft="@+id/btnSettings"></Button>
-    </RelativeLayout>   
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <Button
+        android:id="@+id/btnStart"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/main" />
+
+    <Button
+        android:id="@+id/btnSettings"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/settings" />
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="323dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="0.05"
+        android:src="@drawable/speedometer" />
+
 </LinearLayout>
