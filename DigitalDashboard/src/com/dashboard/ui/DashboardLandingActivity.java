@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 /**
- * Concrete instantiation of an AbstractDashboardActivity, used for the main dashboard display.
+ * Concrete implementation of an AbstractDashboardActivity, used for the main dashboard display.
  * @author Levi Lynch
  * 10/25/2011 -Levi: Connected activity to landing.xml for layout.
  *

@@ -16,8 +16,8 @@ import com.dashboard.dto.SettingsDTO;
  */
 public class DashboardService implements IDashboardService {
 	
-	private HistoryProvider historyDAO;
-	private SettingsProvider settingsDAO;
+	private IHistoryDAO historyDAO;
+	private ISettingsDAO settingsDAO;
 	
 	/**
 	 * The constructor for a DashboardService requires Context to access the database.
@@ -61,7 +61,7 @@ public class DashboardService implements IDashboardService {
 	}
 	
 	@Override
-	public void resetHistory() {
+	public void resetHistory() throws Exception {
 		getHistoryDAO().resetHistory();
 	}
 

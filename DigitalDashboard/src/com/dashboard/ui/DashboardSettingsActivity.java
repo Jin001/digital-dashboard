@@ -16,7 +16,7 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 
 /**
- * Concrete instantiation of an AbstractDashboardActivity, used for displaying
+ * Concrete implementation of an AbstractDashboardActivity, used for displaying
  * and editing application settings.
  * 
  * @author MazanSM

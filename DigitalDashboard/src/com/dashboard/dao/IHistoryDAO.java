@@ -3,7 +3,7 @@ package com.dashboard.dao;
 import com.dashboard.dto.HistoryDTO;
 
 /**
- * Inteface definitions for a HistoryDAO object.  Provides data access
+ * Interface definitions for a HistoryDAO object.  Provides data access
  * for a user's history in the database.
  * @author Joe Rains
  *
@@ -29,6 +29,7 @@ public interface IHistoryDAO {
 	
 	/**
 	 * Resets the history values to zeroes.
+	 * @throws Exception 
 	 */
-	public void resetHistory();
+	public void resetHistory() throws Exception;
 }

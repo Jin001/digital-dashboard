@@ -83,7 +83,7 @@ public class HistoryProvider extends AbstractDashboardProvider implements IHisto
 	}
 	
 	@Override
-	public void resetHistory() {
+	public void resetHistory() throws Exception {
 		
 		// create the parameter values
 		ContentValues values = new ContentValues(2);

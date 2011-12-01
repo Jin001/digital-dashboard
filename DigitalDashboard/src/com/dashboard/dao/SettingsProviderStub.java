@@ -3,7 +3,7 @@ package com.dashboard.dao;
 import com.dashboard.dto.SettingsDTO;
 
 /**
- * Concrete instantiation of a SettingsProvider, used for the testing.
+ * Concrete implementation of an ISettingsDAO, used for the testing.
  * @author Joe Rains
  *
  */

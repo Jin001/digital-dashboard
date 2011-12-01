@@ -38,8 +38,8 @@ public class AbstractDashboardActivity extends Activity {
 			case R.id.main:
 				
 				// TODO CHANGE THIS BACK WHEN THE MAIN DISPLAY IS READY
-				startActivity(new Intent(this, DashboardDisplayActivity.class));
-				//startActivity(new Intent(this, DashboardTestActivity.class));
+				//startActivity(new Intent(this, DashboardDisplayActivity.class));
+				startActivity(new Intent(this, DashboardTestActivity.class));
 				
 				break;
 			case R.id.settings:

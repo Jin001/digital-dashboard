@@ -3,7 +3,7 @@ package com.dashboard.dao;
 import com.dashboard.dto.HistoryDTO;
 
 /**
- * Concrete instantiation of a HistoryProvider, used for the testing.
+ * Concrete implementation of a IHistoryDAO, used for the testing.
  * @author Joe Rains
  *
  */

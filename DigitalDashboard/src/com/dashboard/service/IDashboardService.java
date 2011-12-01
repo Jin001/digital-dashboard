@@ -54,6 +54,7 @@ public interface IDashboardService {
 	
 	/**
 	 * Resets the history values to zeroes.
+	 * @throws Exception 
 	 */
-	public void resetHistory();
+	public void resetHistory() throws Exception;
 }
