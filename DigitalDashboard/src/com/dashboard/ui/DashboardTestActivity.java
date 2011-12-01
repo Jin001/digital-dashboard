@@ -94,7 +94,7 @@ public class DashboardTestActivity extends AbstractDashboardActivity {
 			IDashboardService service = new DashboardService(this.context);
 			try {
 				// add a record with zeroes
-				((DashboardService)service).resetHistory();
+				service.resetHistory();
 				
 				// reset the tripometer display
 				TextView tripometer = (TextView)findViewById(R.id.tripometerDisplay);

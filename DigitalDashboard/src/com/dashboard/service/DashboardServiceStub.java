@@ -8,7 +8,7 @@ import com.dashboard.dto.HistoryDTO;
 import com.dashboard.dto.SettingsDTO;
 
 /**
- * Concrete instantiation of a DashboardService, used for the testing.
+ * Concrete implementation of IDashboardService, used for the testing.
  * @author Joe Rains
  *
  */

@@ -3,7 +3,7 @@ package com.dashboard.dao;
 import com.dashboard.dto.SettingsDTO;
 
 /**
- * Inteface definitions for a SettingsDAO object.  Provides data access
+ * Interface definitions for a SettingsDAO object.  Provides data access
  * for a user's settings in the database.
  * @author Joe Rains
  *

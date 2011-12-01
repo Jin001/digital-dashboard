@@ -12,7 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 /**
- * Concrete instantiation of an AbstractDashboardActivity, used for the main
+ * Concrete implementation of an AbstractDashboardActivity, used for the main
  * dashboard display.
  * 
  * @author MazanSM
@@ -92,7 +92,7 @@ public class DashboardDisplayActivity extends AbstractDashboardActivity {
 			try {
 
 				// add a record with zeroes
-				((DashboardService) service).resetHistory();
+				service.resetHistory();
 
 				// reset the tripometer display
 				TextView tripometer = (TextView) findViewById(R.id.tripometerDisplay);
